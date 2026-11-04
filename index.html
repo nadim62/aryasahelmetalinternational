@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arya Sahel Metal International | Prime &amp; Non-Prime Steel</title>
 <meta name="description" content="Arya Sahel Metal International. International trading and supply of prime and non-prime steel. Explore materials and prepare your steel enquiry.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 /* Layout idea: a cold-rolled mill floor. Navy hero with a rotating coil cross-section and a coil tag,
    then light "plate" sections ruled like a spec sheet. One heat-amber accent for actions only. */
@@ -218,10 +216,10 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
 .route-fallback{position:absolute;inset:0;display:none;place-items:center;color:#9FB0C6;font:.9rem var(--mono);padding:24px;text-align:center}
 .route-stage.no3d canvas,.route-stage.no3d .route-labels{display:none}
 .route-stage.no3d .route-fallback{display:grid}
-.route-steps{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;counter-reset:r}
+.route-steps{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:r}
 .route-steps li{counter-increment:r}
 .route-steps button{all:unset;box-sizing:border-box;display:block;width:100%;height:100%;padding:14px 12px;border-top:3px solid #2F4566;cursor:pointer;color:#B9C6D8;transition:border-color .2s,color .2s,background .2s}
-.route-steps button::before{content:"0" counter(r);display:block;font:800 1.6rem var(--display);color:#3B5275;margin-bottom:6px}
+.route-steps button::before{content:counter(r,decimal-leading-zero);display:block;font:800 1.6rem var(--display);color:#3B5275;margin-bottom:6px}
 .route-steps b{display:block;color:#fff;font-weight:600;font-size:.92rem;margin-bottom:4px}
 .route-steps small{font-size:.8rem;line-height:1.45}
 .route-steps button[aria-current=step]{border-color:var(--heat);background:rgba(232,137,43,.07)}
@@ -243,7 +241,7 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
 <meta property="og:image" content="https://aryasahelmetalinternational.com/industrial-background.webp">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Arya Sahel Metal International","url":"https://aryasahelmetalinternational.com/","email":"inquiry@aryasahelmetalinternational.com","telephone":"+49 152 92606870","address":{"@type":"PostalAddress","streetAddress":"Freibergstraße 6","postalCode":"12107","addressLocality":"Berlin","addressCountry":"DE"}}</script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>
 </head>
 <body><a class="skip-link" href="#top">Skip to content</a>
 
@@ -310,25 +308,29 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
 <section class="block journey" id="journey">
   <div class="wrap">
     <div class="head">
-      <div><p class="eyebrow">How a steel order travels</p><h2>From the mill to your port.</h2></div>
-      <p class="lead">Follow a typical export route in 3D: from production and inspection in Europe, through the export port and the sea voyage, to customs clearance and delivery at your site. Drag the scene to look around.</p>
+      <div><p class="eyebrow">How a steel order travels</p><h2>From the mine to your warehouse.</h2></div>
+      <p class="lead">Follow a coil in 3D, from raw materials and steelmaking in Europe to the sea voyage, rail, customs release and safe delivery to your warehouse. Drag the scene to look around.</p>
     </div>
     <div class="route-stage" id="route-stage">
-      <canvas id="route-canvas" aria-label="Animated 3D illustration of a steel coil travelling from a steel mill to a destination port" role="img"></canvas>
+      <canvas id="route-canvas" aria-label="Animated 3D illustration of a steel order travelling from the mine to the client warehouse" role="img"></canvas>
       <div class="route-labels" id="route-labels" aria-hidden="true"></div>
       <div class="route-hud"><button type="button" id="route-play" aria-pressed="true">Pause</button><div class="route-bar" aria-hidden="true"><i id="route-progress"></i></div></div>
       <div class="route-fallback">The 3D view isn't available in this browser. The steps below show the route.</div>
     </div>
     <ol class="route-steps" id="route-steps">
-      <li><button type="button" data-step="0"><b>Steel mill</b><small>Material is produced or selected from mill or stockholder stock.</small></button></li>
-      <li><button type="button" data-step="1"><b>Inspection</b><small>Condition, dimensions and coil data are checked and recorded.</small></button></li>
-      <li><button type="button" data-step="2"><b>Inland transport</b><small>Truck or rail to the export port.</small></button></li>
-      <li><button type="button" data-step="3"><b>Export port</b><small>Container or break-bulk loading; export documents prepared.</small></button></li>
-      <li><button type="button" data-step="4"><b>Ocean freight</b><small>Sea voyage to the destination port.</small></button></li>
-      <li><button type="button" data-step="5"><b>Destination port</b><small>Arrival and customs clearance with the shipping documents.</small></button></li>
-      <li><button type="button" data-step="6"><b>Delivery</b><small>Final transport to the buyer's site.</small></button></li>
+      <li><button type="button" data-step="0"><b>Mining</b><small>Iron ore and coal are mined at the source.</small></button></li>
+      <li><button type="button" data-step="1"><b>Blast furnace</b><small>Ore is smelted into iron and refined into steel.</small></button></li>
+      <li><button type="button" data-step="2"><b>Rolling & coiling</b><small>Slabs are rolled into strip and wound into coils.</small></button></li>
+      <li><button type="button" data-step="3"><b>Logistics warehouse</b><small>Coils are stored, checked and their data recorded.</small></button></li>
+      <li><button type="button" data-step="4"><b>Container stuffing</b><small>Coils are loaded and secured inside containers.</small></button></li>
+      <li><button type="button" data-step="5"><b>Export port</b><small>Containers are lifted on board the vessel.</small></button></li>
+      <li><button type="button" data-step="6"><b>Sea freight</b><small>The vessel sails to Chattogram, Bangladesh.</small></button></li>
+      <li><button type="button" data-step="7"><b>Chattogram port</b><small>Containers are discharged for onward movement under customs control.</small></button></li>
+      <li><button type="button" data-step="8"><b>Inland rail</b><small>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</small></button></li>
+      <li><button type="button" data-step="9"><b>Customs release</b><small>ICD customs clears the cargo, with examination and payments as applicable.</small></button></li>
+      <li><button type="button" data-step="10"><b>Client warehouse</b><small>Released coils reach the buyer’s warehouse for unloading and checks.</small></button></li>
     </ol>
-    <p class="route-note">Illustrative route. Actual ports, transport mode, transit time and documents are agreed for each order.</p>
+    <p class="route-note">Illustrative supply chain. ASMI is a trader: mining and steelmaking are done by the mills we source from. Production, routing and responsibilities vary by order.</p>
   </div>
 </section>
 
@@ -385,7 +387,7 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
       <p class="eyebrow">Contact</p>
       <h2>Start with your specification.</h2>
       <p class="lead" style="margin-top:20px">Tell us what you need or share a stock offer. Prepare your enquiry below, email us directly, or call to discuss your requirements.</p>
-      <div class="facts"><div><span class="mono">CALL ASMI</span><br><a href="tel:+4915292606870">+49 152 92606870</a></div><div><span class="mono">EMAIL ENQUIRIES</span><br><a href="mailto:Inquiry@aryasahelmetalinternational.com">Inquiry@aryasahelmetalinternational.com</a></div><div><span class="mono">OFFICE ADDRESS</span><br>Freibergstraße 6<br>12107 Berlin, Germany</div></div></div><form id="quote"><p class="full" style="margin:0;color:var(--steel);font-size:.88rem">This form prepares an email to ASMI. Your email app opens so you can review and send it.</p>
+      <div class="facts"><div><span class="mono">CALL ASMI</span><br><a href="tel:+4915292606870">+49 152 92606870</a></div><div><span class="mono">EMAIL ENQUIRIES</span><br><a href="mailto:Inquiry@aryasahelmetalinternational.com">Inquiry@aryasahelmetalinternational.com</a></div><div><span class="mono">OFFICE ADDRESS</span><br>Freibergstraße 6<br>12107 Berlin, Germany</div></div></div><form id="quote"><p class="full" style="margin:0;color:var(--steel);font-size:.88rem">Send your enquiry straight from this page. We reply by email.</p>
       <label>Name (required)<input id="f-name" name="name" required autocomplete="name"></label>
       <label>Company<input id="f-company" name="company" autocomplete="organization"></label>
       <label>Email (required)<input id="f-email" name="email" type="email" required autocomplete="email"></label>
@@ -395,7 +397,9 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
       <fieldset class="full chips" id="f-quality"><legend>Quality <small>(choose one or more)</small></legend><label class="chip"><input type="checkbox" name="quality" value="Prime"><span>Prime</span></label><label class="chip"><input type="checkbox" name="quality" value="Non-prime"><span>Non-prime</span></label><label class="chip"><input type="checkbox" name="quality" value="Excess / overrun stock"><span>Excess / overrun stock</span></label></fieldset>
       <label>Tonnage (t)<input id="f-tons" name="tons" type="number" min="0.01" step="any" placeholder="e.g. 100"></label>
       <label class="full">Destination port / country<input id="f-destination" name="destination" placeholder="Port, city or delivery country"></label><label class="full">Specification<textarea id="f-msg" name="message" placeholder="Grade, thickness × width, coil weight, condition and documentation requirements"></textarea></label>
-      <p class="full" style="margin:0;font-size:.82rem;color:var(--steel)">Your details stay in this page until you send the email using your email app. They are not stored by this form. Attach stock lists, drawings or photos in your email app before sending.</p><div class="full"><button class="btn btn-heat" type="submit">Email my enquiry</button></div>
+      <label class="full">Stock list or specification file (optional)<input id="f-file" name="attachment" type="file" accept=".pdf,.xlsx,.xls,.csv,.doc,.docx,.jpg,.jpeg,.png"></label>
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <p class="full" style="margin:0;font-size:.82rem;color:var(--steel)">We use your details and files to answer your enquiry. Our form service Forminit processes them on our behalf. See our <a href="privacy.html">privacy policy</a>.</p><div class="full"><button class="btn btn-heat" type="submit" id="send">Send enquiry</button></div>
       <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
     </form>
   </div>
@@ -405,7 +409,7 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
 <footer>
   <div class="wrap">
     <span>© <span id="yr">2026</span> Arya Sahel Metal International · Freibergstraße 6, 12107 Berlin, Germany</span>
-    <nav aria-label="Footer"><a href="#products">Explore steel</a><a href="#contact">Prepare an enquiry</a></nav>
+    <nav aria-label="Footer"><a href="#products">Explore steel</a><a href="#contact">Prepare an enquiry</a><a href="impressum.html">Impressum</a><a href="privacy.html">Privacy</a></nav>
   </div>
 </footer>
 
@@ -426,20 +430,37 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
   // "Offer your stock" preselects sell
   document.querySelectorAll('[data-subject]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('f-subject').value=a.dataset.subject;document.getElementById(a.dataset.subject==='sell'?'tab-sell':'tab-buy').click();}));
 
-  // form: no backend, so build the request text to copy
-  const f=document.getElementById('quote'), n=document.getElementById('notice');
-  f.addEventListener('submit',e=>{
+  // form: sends directly through Forminit (EU-hosted form service); falls back to the visitor's email app if not set up or if sending fails
+  const FORMINIT_FORM_ID = '';   // paste the form ID from app.forminit.com, e.g. 'frm_abc123'
+  const f=document.getElementById('quote'), n=document.getElementById('notice'), btn=document.getElementById('send');
+  const say=(html,ok)=>{n.hidden=false;n.innerHTML=html;n.style.borderColor=ok?'#2e7d4f':'';n.scrollIntoView({block:'nearest',behavior:'smooth'});};
+  const loadSdk=()=>new Promise((res,rej)=>{if(window.Forminit)return res();const sc=document.createElement('script');sc.src='https://forminit.com/sdk/v1/forminit.js';sc.onload=res;sc.onerror=rej;document.head.append(sc);});
+  f.addEventListener('submit',async e=>{
     e.preventDefault();
     const pick=k=>[...f.querySelectorAll('input[name='+k+']:checked')].map(c=>c.value).join(', ')||'Not specified';
     const name=f.elements.namedItem('name').value.trim(), email=f.elements.namedItem('email').value.trim();
-    if(!name||!/.+@.+\..+/.test(email)){n.hidden=false;n.innerHTML='<b>Please add your name and a valid email address.</b>';return;}
-    const txt=`Request: ${f.subject.options[f.subject.selectedIndex].text}\nName: ${name}\nCompany: ${f.company.value}\nEmail: ${email}\nCountry: ${f.country.value}\nProducts: ${pick('product')}\nQuality: ${pick('quality')}\nTonnage: ${f.tons.value?f.tons.value+' t':'Not specified'}\nDestination: ${f.destination.value}\nDetails: ${f.message.value}`;
-    n.hidden=false;
-    n.innerHTML='<b>Your request is ready.</b> Your email app should open with the details below. Review and send it to complete your enquiry. If no email app opens, copy the request and email Inquiry@aryasahelmetalinternational.com, or download a copy.<pre></pre><button type="button" class="btn btn-ghost" id="cp">Copy request</button> <button type="button" class="btn btn-heat" id="download">Download brief</button>';
-    n.querySelector('pre').textContent=txt;
-    window.location.href='mailto:Inquiry@aryasahelmetalinternational.com?subject='+encodeURIComponent('ASMI enquiry: '+f.subject.options[f.subject.selectedIndex].text+' - '+pick('product'))+'&body='+encodeURIComponent(txt);
-    document.getElementById('download').onclick=()=>{const u=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));const a=document.createElement('a');a.href=u;a.download='ASMI-steel-enquiry.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};
-    document.getElementById('cp').onclick=async ev=>{try{await navigator.clipboard.writeText(txt);ev.target.textContent='Copied';}catch(_){ev.target.textContent='Select the text above to copy';}};
+    if(!name||!/.+@.+\..+/.test(email)){say('<b>Please add your name and a valid email address.</b>');return;}
+    if(f.botcheck.value)return;
+    const subjText=f.subject.options[f.subject.selectedIndex].text, spec=document.getElementById('f-msg').value;
+    const tons=f.tons.value?f.tons.value+' t':'Not specified', dest=f.destination.value||'Not specified';
+    const txt=`Request: ${subjText}\nName: ${name}\nCompany: ${f.company.value}\nEmail: ${email}\nCountry: ${f.country.value}\nProducts: ${pick('product')}\nQuality: ${pick('quality')}\nTonnage: ${tons}\nDestination: ${dest}\nSpecification: ${spec}`;
+    const mailto=()=>{window.location.href='mailto:inquiry@aryasahelmetalinternational.com?subject='+encodeURIComponent('ASMI enquiry: '+subjText+' - '+pick('product'))+'&body='+encodeURIComponent(txt);};
+    if(!FORMINIT_FORM_ID){mailto();say('<b>Your email app should open with your enquiry.</b> Review and send it. If nothing opens, email <a href="mailto:inquiry@aryasahelmetalinternational.com">inquiry@aryasahelmetalinternational.com</a>.');return;}
+    const file=document.getElementById('f-file').files[0];
+    if(file&&file.size>25*1024*1024){say('<b>The file is larger than 25 MB.</b> Please send it by email instead.');return;}
+    const fd=new FormData();
+    fd.append('fi-sender-fullName',name); fd.append('fi-sender-email',email);
+    if(f.company.value.trim())fd.append('fi-sender-company',f.company.value.trim());
+    [['request',subjText],['country',f.country.value||'Not specified'],['products',pick('product')],['quality',pick('quality')],['tonnage',tons],['destination',dest],['specification',spec||'Not specified']].forEach(([k,v])=>fd.append('fi-text-'+k,v));
+    if(file)fd.append('fi-file-stocklist',file);
+    btn.disabled=true; btn.textContent='Sending…';
+    try{
+      await loadSdk();
+      const {error}=await new Forminit().submit(FORMINIT_FORM_ID,fd);
+      if(error)throw new Error(error.message||'error');
+      f.reset(); say('<b>Thank you, your enquiry has been sent.</b> We will reply to '+email.replace(/[<>&"]/g,'')+' by email.',true);
+    }catch(err){ say('<b>Sorry, sending did not work.</b> Your entries are still in the form. Please try again, or <a href="#" id="mailfb">send it with your email app</a>.'); document.getElementById('mailfb').onclick=ev=>{ev.preventDefault();mailto();}; }
+    finally{ btn.disabled=false; btn.textContent='Send enquiry'; }
   });
 
   // countries: type or pick
@@ -453,83 +474,6 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
-<script type="module">
-import * as THREE from 'three';
-import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-const stage=document.getElementById('route-stage'),canvas=document.getElementById('route-canvas'),labelsEl=document.getElementById('route-labels');
-const steps=[...document.querySelectorAll('#route-steps button')],playBtn=document.getElementById('route-play'),bar=document.getElementById('route-progress');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let renderer;try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});}catch(e){stage.classList.add('no3d');throw e;}
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=innerWidth>700;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-const scene=new THREE.Scene();scene.fog=new THREE.Fog(0x0f1c30,60,120);
-const camera=new THREE.PerspectiveCamera(38,2,0.1,300);camera.position.set(-22,17,33);
-const controls=new OrbitControls(camera,canvas);controls.enableZoom=false;controls.enablePan=false;controls.enableDamping=true;controls.minPolarAngle=0.35;controls.maxPolarAngle=1.35;
-scene.add(new THREE.HemisphereLight(0xdfe8f5,0x223044,1.1));
-const sun=new THREE.DirectionalLight(0xffffff,2.2);sun.position.set(-18,30,16);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-40,right:40,top:20,bottom:-20});scene.add(sun);
-const M=(c,o={})=>new THREE.MeshStandardMaterial({color:c,roughness:.7,metalness:.1,...o});
-const box=(w,h,d,m,x,y,z)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);b.position.set(x,y+h/2,z);b.castShadow=b.receiveShadow=true;return b;};
-const cyl=(r,h,m,x,y,z)=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,20),m);c.position.set(x,y+h/2,z);c.castShadow=true;return c;};
-const mLand=M(0x3a4a5e),mRoad=M(0x283544),mNavy=M(0x16263f),mSteel=M(0x8c9bad,{metalness:.5,roughness:.4}),mHeat=M(0xe8892b,{emissive:0xe8892b,emissiveIntensity:.6}),mPlate=M(0xc9d1db);
-const cols=[0x7f8fa6,0x5c6b7e,0xe8892b,0x9fb0c6,0x3b5275];
-// land and water
-const landA=box(30,1,22,mLand,-23,-1,0),landB=box(30,1,22,mLand,27,-1,0);scene.add(landA,landB);
-scene.add(box(26,.05,2.2,mRoad,-21,0,4),box(14,.05,2.2,mRoad,21,0,4));
-const wg=new THREE.PlaneGeometry(24,40,48,40);wg.rotateX(-Math.PI/2);const water=new THREE.Mesh(wg,new THREE.MeshStandardMaterial({color:0x1f5a85,roughness:.25,metalness:.2,transparent:true,opacity:.92}));water.position.set(2,-.35,0);water.receiveShadow=true;scene.add(water);
-const wpos=wg.attributes.position,wbase=Float32Array.from(wpos.array);
-// steel mill
-const mill=new THREE.Group();mill.add(box(7,4,6,mNavy,-28,0,-3),box(4,6,4,mSteel,-31,0,-4),cyl(.6,9,mSteel,-25.5,0,-5),cyl(.6,7.5,mSteel,-27.3,0,-5.5),cyl(.62,.5,mHeat,-25.5,9,-5),cyl(.62,.5,mHeat,-27.3,7.5,-5.5));scene.add(mill);
-const smoke=[];for(let i=0;i<14;i++){const s=new THREE.Mesh(new THREE.SphereGeometry(.5,10,8),new THREE.MeshStandardMaterial({color:0xc9d1db,transparent:true,opacity:.4,roughness:1}));s.userData.o=i/14;s.userData.x=i%2?-25.5:-27.3;scene.add(s);smoke.push(s);}
-// inspection shed
-scene.add(box(5,2.6,4,mPlate,-18,0,-3),box(5,.35,4.1,mHeat,-18,2.6,-3));
-// port crane builder
-const crane=(x,flip)=>{const g=new THREE.Group();g.add(box(.5,8,.5,mHeat,x-1.4,0,-1.4),box(.5,8,.5,mHeat,x+1.4,0,-1.4),box(.5,8,.5,mHeat,x-1.4,0,1.4),box(.5,8,.5,mHeat,x+1.4,0,1.4));const boom=box(11,.6,.8,mHeat,x+(flip?-3.5:3.5),8,0);g.add(boom);scene.add(g);return g;};
-crane(-9.5,false);crane(13.5,true);
-for(let i=0;i<6;i++){scene.add(box(3,1.3,1.4,M(cols[i%5]),-11.5+(i%2)*3.2,Math.floor(i/2)*1.3,-6.5));scene.add(box(3,1.3,1.4,M(cols[(i+2)%5]),15.5+(i%2)*3.2,Math.floor(i/2)*1.3,-6.5));}
-// buyer warehouse
-scene.add(box(7,3.4,6,mPlate,28,0,-3),box(7.4,.4,6.4,mNavy,28,3.4,-3));
-// vehicles
-const truck=()=>{const g=new THREE.Group();g.add(box(1.4,1.3,1.6,mNavy,1.9,0,0),box(3.4,.35,1.6,mSteel,-.5,.35,0));[-1.6,.2,1.9].forEach(x=>[-.75,.75].forEach(z=>{const w=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,.3,14),M(0x111111));w.rotation.x=Math.PI/2;w.position.set(x,.35,z);g.add(w);}));scene.add(g);return g;};
-const truckA=truck(),truckB=truck();
-const ship=new THREE.Group();{const hs=new THREE.Shape();hs.moveTo(-5,0);hs.lineTo(5,0);hs.lineTo(6.2,1.6);hs.lineTo(-5.4,1.6);hs.closePath();const hull=new THREE.Mesh(new THREE.ExtrudeGeometry(hs,{depth:3,bevelEnabled:false}),M(0x7a2e22));hull.position.z=-1.5;hull.castShadow=true;ship.add(hull,box(1.8,2.4,2.6,mPlate,-3.8,1.6,0));for(let i=0;i<4;i++)ship.add(box(1.9,1,2.4,M(cols[i%5]),-1.4+i*2,1.6,0));}scene.add(ship);
-// coil (hollow cylinder)
-const prof=[[.35,-.45],[.85,-.45],[.85,.45],[.35,.45],[.35,-.45]].map(p=>new THREE.Vector2(p[0],p[1]));
-const coil=new THREE.Mesh(new THREE.LatheGeometry(prof,40),new THREE.MeshStandardMaterial({color:0xd9dee5,metalness:.85,roughness:.25,emissive:0x2a3442,side:THREE.DoubleSide}));coil.scale.setScalar(1.35);coil.rotation.x=Math.PI/2;coil.castShadow=true;scene.add(coil);
-// stations for labels
-const st=[[-27,8,-3,'Steel mill'],[-18,4,-3,'Inspection'],[-14,2.5,4,'Inland transport'],[-9.5,10,0,'Export port'],[2,4,0,'Ocean freight'],[13.5,10,0,'Destination port'],[28,5,-3,'Delivery']].map(s=>({v:new THREE.Vector3(s[0],s[1],s[2]),t:s[3]}));
-st.forEach(s=>{const e=document.createElement('span');e.textContent=s.t;labelsEl.appendChild(e);s.el=e;});
-// timeline: each step lasts D seconds
-const D=4,N=7,T=D*N;const lerp=(a,b,k)=>a+(b-a)*k,ease=k=>k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
-const P={mill:[-24,.45,-.5],shed:[-18,.45,1.5],tA0:[-18,0,4],tA1:[-10.5,0,4],ship0:[-3,-.2,0],ship1:[8,-.2,0],tB0:[15,0,4],tB1:[25,0,4]};
-function pose(t){const s=Math.min(N-1,Math.floor(t/D)),k=ease((t-s*D)/D);let c;
- truckA.position.set(...P.tA0);truckB.position.set(...P.tB0);ship.position.set(...P.ship0);truckB.rotation.y=truckA.rotation.y=Math.PI;
- if(s===0)c=[lerp(P.mill[0],-21,k),.45+Math.sin(k*Math.PI)*.6,lerp(P.mill[2],1.5,k)];
- else if(s===1)c=[lerp(-21,P.shed[0],k),.45,1.5+k*2.5];
- else if(s===2){truckA.position.set(lerp(P.tA0[0],P.tA1[0],k),0,4);c=[truckA.position.x-.4,1.55,4];}
- else if(s===3){truckA.position.set(...P.tA1);const h=Math.sin(k*Math.PI)*6;c=[lerp(-10.9,P.ship0[0]+.6,k),lerp(1.55,2.95,k)+h,lerp(4,0,k)];}
- else if(s===4){truckA.position.set(...P.tA1);ship.position.set(lerp(P.ship0[0],P.ship1[0],k),-.2+Math.sin(k*20)*.08,0);c=[ship.position.x+.6,2.75+ship.position.y+.2,0];}
- else if(s===5){truckA.position.set(...P.tA1);ship.position.set(...P.ship1);const h=Math.sin(k*Math.PI)*6;c=[lerp(P.ship1[0]+.6,P.tB0[0]-.4,k),lerp(2.75,1.55,k)+h,lerp(0,4,k)];}
- else{truckA.position.set(...P.tA1);ship.position.set(...P.ship1);truckB.position.set(lerp(P.tB0[0],P.tB1[0],k),0,4);c=[truckB.position.x-.4,1.55,4];}
- coil.position.set(...c);return s;}
-let t=0,playing=!reduce,last=performance.now(),cur=-1,visible=true,userUntil=0;
-function setStep(s){if(s===cur)return;cur=s;steps.forEach((b,i)=>{if(i===s)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});st.forEach((x,i)=>x.el.classList.toggle('on',i===s));}
-function setPlay(p){playing=p;playBtn.textContent=p?'Pause':'Play';playBtn.setAttribute('aria-pressed',String(p));}
-setPlay(playing);playBtn.addEventListener('click',()=>setPlay(!playing));
-steps.forEach((b,i)=>b.addEventListener('click',()=>{t=i*D+.01;if(reduce)t=i*D+D*.99;}));
-controls.addEventListener('start',()=>{userUntil=performance.now()+6000;});
-new IntersectionObserver(e=>{visible=e[0].isIntersecting;},{threshold:.05}).observe(stage);
-const look=new THREE.Vector3(),tmp=new THREE.Vector3();
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w<560?52:38;camera.updateProjectionMatrix();}
-new ResizeObserver(resize).observe(stage);resize();
-function frame(now){requestAnimationFrame(frame);const dt=Math.min(.05,(now-last)/1000);last=now;if(!visible)return;
- if(playing)t=(t+dt)%T;const s=pose(t);setStep(s);bar.style.width=(t/T*100)+'%';
- for(let i=0;i<wpos.count;i++){const x=wbase[i*3],z=wbase[i*3+2];wpos.array[i*3+1]=Math.sin(x*.6+now*.0012)*.12+Math.cos(z*.5+now*.001)*.1;}wpos.needsUpdate=true;
- smoke.forEach(p=>{const k=(p.userData.o+now*.00012)%1;p.position.set(p.userData.x+k*3,9+k*7,-5+k*1.5);p.scale.setScalar(.6+k*2.2);p.material.opacity=.45*(1-k);});
- coil.rotation.z+=playing?dt*.6:0;
- look.lerp(coil.position,.06);
- if(now>userUntil){tmp.set(look.x-5,17,look.z+33);if(innerWidth<560)tmp.set(look.x-2,27,look.z+46);camera.position.lerp(tmp,.03);}
- controls.target.copy(look);controls.update();renderer.render(scene,camera);
- const w=stage.clientWidth,h=stage.clientHeight;st.forEach(x=>{tmp.copy(x.v).project(camera);const on=tmp.z<1&&Math.abs(tmp.x)<1.1&&Math.abs(tmp.y)<1.1;x.el.style.display=on?'':'none';x.el.style.left=((tmp.x+1)/2*w)+'px';x.el.style.top=((1-tmp.y)/2*h)+'px';});}
-pose(0);look.copy(coil.position);requestAnimationFrame(frame);
-</script>
+<script type="module" src="js/route3d.js"></script>
 </body>
 </html>
