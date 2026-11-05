@@ -461,7 +461,7 @@ footer nav{flex-wrap:wrap;gap:6px 22px}
   document.getElementById('consent-remember').onclick=()=>{try{localStorage.setItem('asmi-notice',String(Date.now()));}catch(_){} cbar.hidden=true;};
 
   // form: sends in the page through Forminit (EU-hosted form service). Never opens an email app.
-  const FORMINIT_FORM_ID = '';   // form ID from app.forminit.com, e.g. 'frm_abc123'
+  const FORMINIT_FORM_ID = '3d6bguqn94p';   // Forminit form "ASMI website enquiries"
   const MAIL='inquiry@aryasahelmetalinternational.com';
   const f=document.getElementById('quote'), n=document.getElementById('notice'), btn=document.getElementById('send');
   const say=(html,ok)=>{n.hidden=false;n.innerHTML=html;n.style.borderColor=ok?'#2e7d4f':'';n.scrollIntoView({block:'nearest',behavior:'smooth'});};
@@ -480,7 +480,8 @@ footer nav{flex-wrap:wrap;gap:6px 22px}
     const file=document.getElementById('f-file').files[0];
     if(file&&file.size>25*1024*1024){say('<b>The file is larger than 25 MB.</b> Please make it smaller, or send it to '+copyHtml);return;}
     const fd=new FormData();
-    fd.append('fi-sender-fullName',name); fd.append('fi-sender-email',email);
+    const cleanName=(name.normalize('NFC').replace(/[^\p{L}\p{M} .'\-]/gu,' ').replace(/\s+/g,' ').trim())||'Website visitor'; // Forminit allows only letters, spaces, - ' .
+    fd.append('fi-sender-fullName',cleanName); fd.append('fi-sender-email',email); fd.append('fi-text-name',name);
     if(f.company.value.trim())fd.append('fi-sender-company',f.company.value.trim());
     [['request',subjText],['country',f.country.value||'Not specified'],['products',pick('product')],['quality',pick('quality')],['tonnage',tons],['destination',dest],['specification',spec||'Not specified']].forEach(([k,v])=>fd.append('fi-text-'+k,v));
     if(file)fd.append('fi-file-stocklist',file);
