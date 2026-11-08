@@ -309,11 +309,11 @@ footer a:hover{color:var(--gold-hi)}
 @media(max-width:520px){.nav>.btn{white-space:nowrap;padding:10px 12px!important;font-size:.8rem!important}.brand small{white-space:nowrap;letter-spacing:.08em}.brand span{font-size:1.05rem}}
 #gold-void{position:fixed;inset:0;width:100vw;height:100vh;z-index:5;pointer-events:none;mix-blend-mode:screen}
 
-/* Locally hosted real footage replaces the WebGL route. */
+/* Offline-rendered 3D film: native playback and eleven accessible chapters. */
 .trade-film{position:relative;z-index:6;margin:0;border:1px solid var(--rule,#393323);background:#090909}
 .trade-film-frame{position:relative;background:#090909;aspect-ratio:16/9;overflow:hidden}
 .trade-film video{display:block;width:100%;height:100%;object-fit:contain;background:#090909}
-.film-heading{position:absolute;inset:0 0 auto;padding:24px 28px 50px;background:linear-gradient(rgba(0,0,0,.78),transparent);pointer-events:none;color:#fff}
+.film-heading{display:none;position:absolute;inset:0 0 auto;padding:24px 28px 50px;background:linear-gradient(rgba(0,0,0,.78),transparent);pointer-events:none;color:#fff}
 .film-heading span{display:block;font:500 .65rem var(--mono);letter-spacing:.16em;color:#e4ca7d;margin-bottom:9px}
 .film-heading strong{font:600 clamp(1.35rem,3vw,2.3rem) var(--display);text-transform:uppercase;letter-spacing:.025em}
 .film-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-top:1px solid var(--rule,#393323);flex-wrap:wrap}
@@ -327,7 +327,7 @@ footer a:hover{color:var(--gold-hi)}
 #film-retry{font:inherit;text-decoration:underline;background:none;border:0;color:inherit;cursor:pointer}
 .route-intro{margin-top:36px}.route-intro h3{font:600 clamp(1.5rem,3vw,2.2rem) var(--display);color:#e4cf86;margin:8px 0}
 .route-steps .route-step{cursor:default}
-@media(max-width:560px){.film-heading{padding:16px 16px 35px}.film-toolbar{padding:12px 14px}.film-chapters{width:100%}.film-chapters button{flex:1}.trade-film figcaption{padding:0 14px 14px}}
+@media(max-width:560px){.film-heading{display:none;padding:16px 16px 35px}.film-toolbar{padding:12px 14px}.film-chapters{width:100%}.film-chapters button{flex:1 1 42%;text-align:left}.trade-film figcaption{padding:0 14px 14px}}
 
 </style>
 <link rel="canonical" href="https://aryasahelmetalinternational.com/">
@@ -426,36 +426,45 @@ footer a:hover{color:var(--gold-hi)}
 <section class="block journey" id="journey">
   <div class="wrap">
     <div class="head">
-      <div><p class="eyebrow">Industry in motion</p><h2>Real industry.<br>International delivery.</h2></div>
-      <p class="lead">Watch real footage of metal processing and container-port operations. Explore the eleven stages of an illustrative steel supply chain below.</p>
+      <div><p class="eyebrow">Industry in motion</p><h2>The steel journey.<br>From source to delivery.</h2></div>
+      <p class="lead">Follow eleven stages of an illustrative steel supply chain in a code-generated 3D film, from raw materials to the buyer’s warehouse.</p>
     </div>
     <figure class="trade-film" aria-labelledby="film-title" aria-describedby="film-description">
       <div class="trade-film-frame">
-        <video id="trade-video" controls muted loop playsinline preload="none" poster="steel-trade-poster.jpg" aria-label="Illustrative metal processing and container-port film" aria-describedby="film-description" width="1280" height="720">
-          <source data-src="steel-trade-film.mp4" type="video/mp4">
+        <video id="trade-video" controls muted loop playsinline preload="none" poster="steel-trade-poster.jpg?v=3d-20261108-1" aria-label="Eleven-stage 3D steel supply-chain film" aria-describedby="film-description" width="1920" height="1080">
+          <source data-src="steel-trade-film.mp4?v=3d-20261108-1" data-mobile-src="steel-trade-film-mobile.mp4?v=3d-20261108-1" type="video/mp4">
           Your browser cannot play this film. The supply-chain stages are described below.
         </video>
-        <div class="film-heading" aria-hidden="true"><span>ASMI / INDUSTRY FILM</span><strong id="film-title">The world of steel trade</strong></div>
+        <div class="film-heading" aria-hidden="true"><span>ASMI / 3D INDUSTRIAL FILM</span><strong id="film-title">The steel journey</strong></div>
       </div>
       <div class="film-toolbar">
-        <span class="film-runtime">REAL FOOTAGE / 00:24</span>
+        <span class="film-runtime">3D FILM / 00:44</span>
         <div class="film-chapters" role="group" aria-label="Video chapters">
-          <button type="button" data-film-time="0" aria-label="Play metal processing chapter" aria-pressed="true">01 Metal processing</button>
-          <button type="button" data-film-time="8" aria-label="Play port logistics chapter" aria-pressed="false">02 Port logistics</button>
+          <button type="button" data-film-time="0" aria-label="Play stage 1: Raw materials" aria-pressed="true">01 Raw materials</button>
+          <button type="button" data-film-time="4" aria-label="Play stage 2: Steelmaking" aria-pressed="false">02 Steelmaking</button>
+          <button type="button" data-film-time="8" aria-label="Play stage 3: Rolling & coiling" aria-pressed="false">03 Rolling & coiling</button>
+          <button type="button" data-film-time="12" aria-label="Play stage 4: Storage & inspection" aria-pressed="false">04 Storage & inspection</button>
+          <button type="button" data-film-time="16" aria-label="Play stage 5: Container stuffing" aria-pressed="false">05 Container stuffing</button>
+          <button type="button" data-film-time="20" aria-label="Play stage 6: Export port" aria-pressed="false">06 Export port</button>
+          <button type="button" data-film-time="24" aria-label="Play stage 7: Sea freight" aria-pressed="false">07 Sea freight</button>
+          <button type="button" data-film-time="28" aria-label="Play stage 8: Chattogram arrival" aria-pressed="false">08 Chattogram arrival</button>
+          <button type="button" data-film-time="32" aria-label="Play stage 9: Inland rail" aria-pressed="false">09 Inland rail</button>
+          <button type="button" data-film-time="36" aria-label="Play stage 10: Customs release" aria-pressed="false">10 Customs release</button>
+          <button type="button" data-film-time="40" aria-label="Play stage 11: Client warehouse" aria-pressed="false">11 Client warehouse</button>
         </div>
       </div>
       <p id="film-error" role="status" hidden>The film could not load. Check your connection and <button type="button" id="film-retry">try again</button>. The route below is available to read.</p>
-      <figcaption id="film-description">A silent film of industrial metal machining, followed by a container vessel and dockside cranes. Stock footage for illustration; facilities, stock and routes are not ASMI-specific.</figcaption>
+      <figcaption id="film-description">An original, code-generated 3D visualisation of eleven supply-chain stages. ASMI is a steel trader; the mines, mills, vessels and terminals shown are illustrative, not ASMI-owned facilities. Actual production methods and delivery routes vary by order.</figcaption>
     </figure>
     <div class="route-intro"><p class="eyebrow">The supply chain</p><h3>From source to warehouse.</h3></div>
     <ol class="route-steps" id="route-steps">
       <li><div class="route-step"><b>Mining</b><small>Iron ore and coal feed one conventional steelmaking route.</small></div></li>
-      <li><div class="route-step"><b>Blast furnace</b><small>Mills make steel and cast slabs; production methods vary.</small></div></li>
+      <li><div class="route-step"><b>Furnace & steelmaking</b><small>A conventional route refines molten iron into steel, then casts slabs.</small></div></li>
       <li><div class="route-step"><b>Rolling & coiling</b><small>Mills roll, finish and coil steel to the required specification.</small></div></li>
       <li><div class="route-step"><b>Logistics warehouse</b><small>Coils are stored, checked and their data recorded.</small></div></li>
       <li><div class="route-step"><b>Container stuffing</b><small>Coils are loaded and secured inside containers.</small></div></li>
       <li><div class="route-step"><b>Export port</b><small>Containers are lifted on board the vessel.</small></div></li>
-      <li><div class="route-step"><b>Sea freight</b><small>The vessel sails to Chattogram, Bangladesh.</small></div></li>
+      <li><div class="route-step"><b>Sea freight</b><small>The cargo travels to Bangladesh, with transhipment where required.</small></div></li>
       <li><div class="route-step"><b>Chattogram port</b><small>Containers are discharged for onward movement under customs control.</small></div></li>
       <li><div class="route-step"><b>Inland rail</b><small>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</small></div></li>
       <li><div class="route-step"><b>Customs release</b><small>ICD customs clears the cargo, with examination and payments as applicable.</small></div></li>
@@ -626,7 +635,7 @@ footer a:hover{color:var(--gold-hi)}
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
-<script src="trade-video.js" defer></script>
+<script src="trade-video.js?v=3d-20261108-1" defer></script>
 <script src="js/goldvoid.js" defer></script>
 </body>
 </html>

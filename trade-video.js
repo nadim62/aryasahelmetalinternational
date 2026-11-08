@@ -11,7 +11,7 @@
   let loaded = false, inView = false, autoPaused = false, userPaused = false;
   function load() {
     if (loaded) return;
-    source.src = source.dataset.src;
+    source.src = (saveData || window.matchMedia('(max-width: 680px)').matches) && source.dataset.mobileSrc ? source.dataset.mobileSrc : source.dataset.src;
     loaded = true;
     error.hidden = true;
     video.load();
@@ -21,9 +21,10 @@
   video.addEventListener('play', () => { userPaused = false; error.hidden = true; });
   video.addEventListener('pause', () => { if (!autoPaused && inView) userPaused = true; autoPaused = false; });
   video.addEventListener('timeupdate', () => {
-    const port = video.currentTime >= 8;
-    title.textContent = port ? 'Port logistics' : 'Metal processing';
-    chapters.forEach((b,i) => b.setAttribute('aria-pressed', String(i === (port ? 1 : 0))));
+    let active = 0;
+    chapters.forEach((b,i) => { if (video.currentTime >= Number(b.dataset.filmTime)) active = i; });
+    title.textContent = chapters[active].textContent.replace(/^\d+\s*/, '');
+    chapters.forEach((b,i) => b.setAttribute('aria-pressed', String(i === active)));
   });
   function showError() { if (loaded) error.hidden = false; }
   video.addEventListener('error', showError);
@@ -31,7 +32,11 @@
   document.getElementById('film-retry').addEventListener('click', () => { error.hidden = true; loaded = false; load(); play(); });
   chapters.forEach(button => button.addEventListener('click', () => {
     load();
-    const seek = () => { video.currentTime = Number(button.dataset.filmTime); play(); };
+    const seek = () => {
+      video.currentTime = Number(button.dataset.filmTime);
+      video.scrollIntoView({behavior: motion.matches ? 'auto' : 'smooth', block:'center'});
+      play();
+    };
     if (video.readyState >= 1) seek(); else video.addEventListener('loadedmetadata', seek, {once:true});
   }));
   // Load only near the film; respect reduced motion and data-saving preferences.
