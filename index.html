@@ -324,7 +324,23 @@ footer a:hover{color:var(--gold-hi)}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Arya Sahel Metal International","url":"https://aryasahelmetalinternational.com/","email":"inquiry@aryasahelmetalinternational.com","telephone":"+49 152 92606870","address":{"@type":"PostalAddress","streetAddress":"Freibergstraße 6","postalCode":"12107","addressLocality":"Berlin","addressCountry":"DE"}}</script>
 <script type="importmap">{"imports":{"three":"./vendor/three/three.module.min.js","three/addons/":"./vendor/three/addons/"}}</script>
 </head>
-<body><a class="skip-link" href="#top">Skip to content</a>
+<body>
+<script>
+/* always open at the top of the homepage: Safari otherwise reopens at the last section (e.g. #contact) */
+(function(){
+  try{history.scrollRestoration='manual';}catch(_){}
+  var same=false; try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin;}catch(_){}
+  if(location.hash&&!same){history.replaceState(null,'',location.pathname+location.search);}
+  var top=!location.hash;
+  if(top){scrollTo(0,0);addEventListener('DOMContentLoaded',function(){scrollTo(0,0);});addEventListener('load',function(){scrollTo(0,0);});addEventListener('pageshow',function(e){if(e.persisted)scrollTo(0,0);});}
+  /* in-page menu links scroll smoothly without writing #section into the address bar */
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a||a.classList.contains('skip-link'))return;
+    var id=a.getAttribute('href').slice(1), el=id?document.getElementById(id):document.body; if(!el)return;
+    e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();
+</script><a class="skip-link" href="#top">Skip to content</a>
 
 <header class="top">
   <div class="wrap nav">
