@@ -6,7 +6,7 @@
 <title>Arya Sahel Metal International | Prime &amp; Non-Prime Steel</title>
 <meta name="description" content="Arya Sahel Metal International. International trading and supply of prime and non-prime steel. Explore materials and prepare your steel enquiry.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="theme-color" content="#16263F">
+<meta name="theme-color" content="#000000">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -246,6 +246,68 @@ footer nav{flex-wrap:wrap;gap:6px 22px}
 @media(max-width:520px){.brand small{font-size:.58rem;letter-spacing:.12em}.menu-toggle{font-size:.9rem!important;padding:10px 12px!important}.nav>.btn{font-size:.85rem!important;padding:11px 14px!important}}
 @media(max-width:560px){.route-stage{min-height:0;width:100%}}
 @media(max-width:360px){.route-steps{grid-template-columns:minmax(0,1fr)!important}.nav>.btn{display:none}}
+/* ===== Dark & gold theme (about 95% black, 5% gold) ===== */
+:root{--ink:#ECE6D6;--gold:#D4AF37;--gold-hi:#FFE57F;--plate:#050505;--sheet:#0B0B0B;--rule:rgba(212,175,55,.2);--steel:#A8A190;--heat:#D4AF37;color-scheme:dark}
+html{background:#000}
+body{background:#000;color:var(--ink)}
+h1,h2{color:var(--gold-hi)}
+h2{background:linear-gradient(180deg,#FFF1B8 0%,#E6C35C 55%,#B8902C 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h3{color:var(--ink)}
+.eyebrow{color:#C9A64A}
+.btn-heat{background:linear-gradient(135deg,#FFE57F,#D4AF37 55%,#B8902C);color:#0A0A0A;box-shadow:0 0 22px -6px rgba(255,215,0,.45)}
+.btn-ghost{color:var(--gold-hi)}
+header.top{background:rgba(0,0,0,.55);border-bottom-color:rgba(212,175,55,.22)}
+.nav ul a{color:#D9D2BF}.nav ul a:hover{color:var(--gold-hi)}
+.brand small{color:#C9A64A}
+.menu-toggle{border-color:rgba(212,175,55,.45);color:var(--gold-hi)}
+.nav ul.open{background:#070707;border-bottom:1px solid var(--rule)}
+.hero::after{background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.45)),linear-gradient(0deg,rgba(0,0,0,.55),transparent)!important}
+.terms,.journey,footer{background:#000}
+.terms{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.terms a{color:#D9D2BF;border-color:var(--rule)}
+section.block{background:#000;border-bottom-color:var(--rule)}
+.why{background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.82)),url('industrial-background.webp') center 65%/cover}
+.why .compare div{background:rgba(10,10,10,.75);border-color:var(--rule)}
+.compare .with{border-color:var(--gold);background:rgba(212,175,55,.06)}
+.compare li{color:#D9D2BF}
+.prod{background:var(--sheet);border-color:var(--rule)}
+.prod:hover{background:#111008}
+.prod>img{background:#111}
+.product-filters button{color:var(--ink);border-color:var(--rule)}
+.product-filters button[aria-pressed=true]{background:var(--gold);color:#000;border-color:var(--gold)}
+.tabs{border-color:var(--rule)}
+.tabs button{color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--gold);color:#000}
+.grade{border-top-color:var(--gold)}.grade.np{border-color:#8C7536}.grade.ex{border-color:var(--gold-hi)}
+.steps li{border-top-color:var(--rule)}
+.steps li::before{color:rgba(212,175,55,.32)}
+.doc{background:var(--sheet);border-color:var(--rule)}
+form{background:rgba(8,8,8,.92);border-color:var(--rule)}
+input,select,textarea{background:#000;color:var(--ink);border-color:rgba(212,175,55,.28)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 2px rgba(212,175,55,.25)}
+::placeholder{color:#7d776a}
+label.chip span{background:#000;border-color:var(--rule)}
+label.chip input:checked+span{background:rgba(212,175,55,.16);border-color:var(--gold);color:var(--gold-hi)}
+label.chip input:checked+span::before{color:var(--gold-hi)}
+.notice{background:rgba(212,175,55,.08);color:var(--ink);border-left-color:var(--gold)}
+.facts div{border-left-color:var(--gold)}
+.facts a{color:var(--gold-hi)}
+footer{color:#9E978A;border-top:1px solid var(--rule)}
+footer a:hover{color:var(--gold-hi)}
+.consent{background:rgba(5,5,5,.96);border-top-color:var(--gold);box-shadow:0 0 40px -10px rgba(212,175,55,.35)}
+.route-stage{border-color:var(--rule);background:linear-gradient(#0d0d0d,#000)}
+.route-steps button{border-top-color:rgba(212,175,55,.18);color:#BDB6A4}
+.route-steps button::before{color:rgba(212,175,55,.35)}
+.route-steps button[aria-current=step]{border-color:var(--gold);background:rgba(212,175,55,.07)}
+.route-steps button[aria-current=step]::before{color:var(--gold-hi)}
+.route-labels span{background:rgba(0,0,0,.8);border-color:var(--rule);color:#D9D2BF}
+.route-labels span.on{background:var(--gold);color:#000;border-color:var(--gold)}
+.route-hud button,.route-bar i{background:var(--gold)}
+.journey .eyebrow{color:#C9A64A}.journey .lead,.why .lead{color:#BDB6A4}
+:focus-visible{outline-color:var(--gold-hi)}
+/* the interactive gold layer: drawn over the page in "screen" mode, so black adds nothing and only gold light shows */
+@media(max-width:520px){.nav>.btn{white-space:nowrap;padding:10px 12px!important;font-size:.8rem!important}.brand small{white-space:nowrap;letter-spacing:.08em}.brand span{font-size:1.05rem}}
+#gold-void{position:fixed;inset:0;width:100vw;height:100vh;z-index:5;pointer-events:none;mix-blend-mode:screen}
 </style>
 <link rel="canonical" href="https://aryasahelmetalinternational.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316263F'/%3E%3Cpath d='M32 10 54 50H42L32 31 22 50H10z' fill='%23C9D1DB'/%3E%3Cpath d='M32 10 54 50H42L32 31z' fill='%23E8892B'/%3E%3C/svg%3E">
@@ -521,5 +583,6 @@ footer nav{flex-wrap:wrap;gap:6px 22px}
   if(!st||!('IntersectionObserver' in window)){go();}
   else{const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();go();}},{rootMargin:'800px 0px'});io.observe(st);}
 </script>
+<script src="js/goldvoid.js" defer></script>
 </body>
 </html>
