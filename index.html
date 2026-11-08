@@ -222,13 +222,13 @@ label.chip input:focus-visible+span{outline:3px solid var(--heat);outline-offset
 .route-stage.no3d .route-fallback{display:grid}
 .route-steps{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;counter-reset:r}
 .route-steps li{counter-increment:r}
-.route-steps button{all:unset;box-sizing:border-box;display:block;width:100%;height:100%;padding:14px 12px;border-top:3px solid #2F4566;cursor:pointer;color:#B9C6D8;transition:border-color .2s,color .2s,background .2s}
-.route-steps button::before{content:counter(r,decimal-leading-zero);display:block;font:800 1.6rem var(--display);color:#3B5275;margin-bottom:6px}
+.route-steps .route-step{all:unset;box-sizing:border-box;display:block;width:100%;height:100%;padding:14px 12px;border-top:3px solid #2F4566;color:#B9C6D8}
+.route-steps .route-step::before{content:counter(r,decimal-leading-zero);display:block;font:800 1.6rem var(--display);color:#3B5275;margin-bottom:6px}
 .route-steps b{display:block;color:#fff;font-weight:600;font-size:.92rem;margin-bottom:4px}
 .route-steps small{font-size:.8rem;line-height:1.45}
-.route-steps button[aria-current=step]{border-color:var(--heat);background:rgba(232,137,43,.07)}
-.route-steps button[aria-current=step]::before{color:var(--heat)}
-.route-steps button:focus-visible{outline:3px solid var(--heat);outline-offset:2px}
+.route-steps .route-step[aria-current=step]{border-color:var(--heat);background:rgba(232,137,43,.07)}
+.route-steps .route-step[aria-current=step]::before{color:var(--heat)}
+.route-steps .route-step:focus-visible{outline:3px solid var(--heat);outline-offset:2px}
 .route-note{margin:18px 0 0;font-size:.82rem;color:#8FA1B9}
 @media (max-width:980px){.route-steps{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:560px){.route-steps{grid-template-columns:1fr 1fr}.route-stage{aspect-ratio:1/1}.route-labels span{font-size:.6rem;padding:3px 6px}}
@@ -296,10 +296,10 @@ footer{color:#9E978A;border-top:1px solid var(--rule)}
 footer a:hover{color:var(--gold-hi)}
 .consent{background:rgba(5,5,5,.96);border-top-color:var(--gold);box-shadow:0 0 40px -10px rgba(212,175,55,.35)}
 .route-stage{border-color:var(--rule);background:linear-gradient(#0d0d0d,#000)}
-.route-steps button{border-top-color:rgba(212,175,55,.18);color:#BDB6A4}
-.route-steps button::before{color:rgba(212,175,55,.35)}
-.route-steps button[aria-current=step]{border-color:var(--gold);background:rgba(212,175,55,.07)}
-.route-steps button[aria-current=step]::before{color:var(--gold-hi)}
+.route-steps .route-step{border-top-color:rgba(212,175,55,.18);color:#BDB6A4}
+.route-steps .route-step::before{color:rgba(212,175,55,.35)}
+.route-steps .route-step[aria-current=step]{border-color:var(--gold);background:rgba(212,175,55,.07)}
+.route-steps .route-step[aria-current=step]::before{color:var(--gold-hi)}
 .route-labels span{background:rgba(0,0,0,.8);border-color:var(--rule);color:#D9D2BF}
 .route-labels span.on{background:var(--gold);color:#000;border-color:var(--gold)}
 .route-hud button,.route-bar i{background:var(--gold)}
@@ -308,6 +308,27 @@ footer a:hover{color:var(--gold-hi)}
 /* the interactive gold layer: drawn over the page in "screen" mode, so black adds nothing and only gold light shows */
 @media(max-width:520px){.nav>.btn{white-space:nowrap;padding:10px 12px!important;font-size:.8rem!important}.brand small{white-space:nowrap;letter-spacing:.08em}.brand span{font-size:1.05rem}}
 #gold-void{position:fixed;inset:0;width:100vw;height:100vh;z-index:5;pointer-events:none;mix-blend-mode:screen}
+
+/* Locally hosted real footage replaces the WebGL route. */
+.trade-film{position:relative;z-index:6;margin:0;border:1px solid var(--rule,#393323);background:#090909}
+.trade-film-frame{position:relative;background:#090909;aspect-ratio:16/9;overflow:hidden}
+.trade-film video{display:block;width:100%;height:100%;object-fit:contain;background:#090909}
+.film-heading{position:absolute;inset:0 0 auto;padding:24px 28px 50px;background:linear-gradient(rgba(0,0,0,.78),transparent);pointer-events:none;color:#fff}
+.film-heading span{display:block;font:500 .65rem var(--mono);letter-spacing:.16em;color:#e4ca7d;margin-bottom:9px}
+.film-heading strong{font:600 clamp(1.35rem,3vw,2.3rem) var(--display);text-transform:uppercase;letter-spacing:.025em}
+.film-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 22px;border-top:1px solid var(--rule,#393323);flex-wrap:wrap}
+.film-runtime{font:500 .65rem var(--mono);letter-spacing:.08em;color:#c9c1ac}
+.film-chapters{display:flex;gap:8px;flex-wrap:wrap}
+.film-chapters button{font:500 .78rem var(--body);border:1px solid #756239;background:transparent;color:#ded8c8;padding:9px 13px;min-height:44px;cursor:pointer}
+.film-chapters button[aria-pressed=true]{background:#d4af37;color:#090909;border-color:#d4af37}
+.film-chapters button:focus-visible,#film-retry:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.trade-film figcaption{font-size:.78rem;line-height:1.6;color:#bdb6a4;padding:0 22px 18px}
+#film-error{padding:12px 22px;color:#f4d78a;font-size:.9rem}
+#film-retry{font:inherit;text-decoration:underline;background:none;border:0;color:inherit;cursor:pointer}
+.route-intro{margin-top:36px}.route-intro h3{font:600 clamp(1.5rem,3vw,2.2rem) var(--display);color:#e4cf86;margin:8px 0}
+.route-steps .route-step{cursor:default}
+@media(max-width:560px){.film-heading{padding:16px 16px 35px}.film-toolbar{padding:12px 14px}.film-chapters{width:100%}.film-chapters button{flex:1}.trade-film figcaption{padding:0 14px 14px}}
+
 </style>
 <link rel="canonical" href="https://aryasahelmetalinternational.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316263F'/%3E%3Cpath d='M32 10 54 50H42L32 31 22 50H10z' fill='%23C9D1DB'/%3E%3Cpath d='M32 10 54 50H42L32 31z' fill='%23E8892B'/%3E%3C/svg%3E">
@@ -405,29 +426,42 @@ footer a:hover{color:var(--gold-hi)}
 <section class="block journey" id="journey">
   <div class="wrap">
     <div class="head">
-      <div><p class="eyebrow">How a steel order travels</p><h2>From the mine to your warehouse.</h2></div>
-      <p class="lead">Follow a coil in 3D, from raw materials and steelmaking in Europe to the sea voyage, rail, customs release and safe delivery to your warehouse. Drag the scene to look around.</p>
+      <div><p class="eyebrow">Industry in motion</p><h2>Real industry.<br>International delivery.</h2></div>
+      <p class="lead">Watch real footage of metal processing and container-port operations. Explore the eleven stages of an illustrative steel supply chain below.</p>
     </div>
-    <div class="route-stage" id="route-stage">
-      <canvas id="route-canvas" aria-label="Animated 3D illustration of a steel order travelling from the mine to the client warehouse" role="img"></canvas>
-      <div class="route-labels" id="route-labels" aria-hidden="true"></div>
-      <div class="route-hud"><button type="button" id="route-play" aria-pressed="true">Pause</button><div class="route-bar" aria-hidden="true"><i id="route-progress"></i></div></div>
-      <div class="route-fallback">The 3D view isn't available in this browser. The steps below show the route.</div>
-    </div>
+    <figure class="trade-film" aria-labelledby="film-title" aria-describedby="film-description">
+      <div class="trade-film-frame">
+        <video id="trade-video" controls muted loop playsinline preload="none" poster="steel-trade-poster.jpg" aria-label="Illustrative metal processing and container-port film" aria-describedby="film-description" width="1280" height="720">
+          <source data-src="steel-trade-film.mp4" type="video/mp4">
+          Your browser cannot play this film. The supply-chain stages are described below.
+        </video>
+        <div class="film-heading" aria-hidden="true"><span>ASMI / INDUSTRY FILM</span><strong id="film-title">The world of steel trade</strong></div>
+      </div>
+      <div class="film-toolbar">
+        <span class="film-runtime">REAL FOOTAGE / 00:24</span>
+        <div class="film-chapters" role="group" aria-label="Video chapters">
+          <button type="button" data-film-time="0" aria-label="Play metal processing chapter" aria-pressed="true">01 Metal processing</button>
+          <button type="button" data-film-time="8" aria-label="Play port logistics chapter" aria-pressed="false">02 Port logistics</button>
+        </div>
+      </div>
+      <p id="film-error" role="status" hidden>The film could not load. Check your connection and <button type="button" id="film-retry">try again</button>. The route below is available to read.</p>
+      <figcaption id="film-description">A silent film of industrial metal machining, followed by a container vessel and dockside cranes. Stock footage for illustration; facilities, stock and routes are not ASMI-specific.</figcaption>
+    </figure>
+    <div class="route-intro"><p class="eyebrow">The supply chain</p><h3>From source to warehouse.</h3></div>
     <ol class="route-steps" id="route-steps">
-      <li><button type="button" data-step="0"><b>Mining</b><small>Iron ore and coal are mined at the source.</small></button></li>
-      <li><button type="button" data-step="1"><b>Blast furnace</b><small>Ore is smelted into iron and refined into steel.</small></button></li>
-      <li><button type="button" data-step="2"><b>Rolling & coiling</b><small>Slabs are rolled into strip and wound into coils.</small></button></li>
-      <li><button type="button" data-step="3"><b>Logistics warehouse</b><small>Coils are stored, checked and their data recorded.</small></button></li>
-      <li><button type="button" data-step="4"><b>Container stuffing</b><small>Coils are loaded and secured inside containers.</small></button></li>
-      <li><button type="button" data-step="5"><b>Export port</b><small>Containers are lifted on board the vessel.</small></button></li>
-      <li><button type="button" data-step="6"><b>Sea freight</b><small>The vessel sails to Chattogram, Bangladesh.</small></button></li>
-      <li><button type="button" data-step="7"><b>Chattogram port</b><small>Containers are discharged for onward movement under customs control.</small></button></li>
-      <li><button type="button" data-step="8"><b>Inland rail</b><small>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</small></button></li>
-      <li><button type="button" data-step="9"><b>Customs release</b><small>ICD customs clears the cargo, with examination and payments as applicable.</small></button></li>
-      <li><button type="button" data-step="10"><b>Client warehouse</b><small>Released coils reach the buyer’s warehouse for unloading and checks.</small></button></li>
+      <li><div class="route-step"><b>Mining</b><small>Iron ore and coal feed one conventional steelmaking route.</small></div></li>
+      <li><div class="route-step"><b>Blast furnace</b><small>Mills make steel and cast slabs; production methods vary.</small></div></li>
+      <li><div class="route-step"><b>Rolling & coiling</b><small>Mills roll, finish and coil steel to the required specification.</small></div></li>
+      <li><div class="route-step"><b>Logistics warehouse</b><small>Coils are stored, checked and their data recorded.</small></div></li>
+      <li><div class="route-step"><b>Container stuffing</b><small>Coils are loaded and secured inside containers.</small></div></li>
+      <li><div class="route-step"><b>Export port</b><small>Containers are lifted on board the vessel.</small></div></li>
+      <li><div class="route-step"><b>Sea freight</b><small>The vessel sails to Chattogram, Bangladesh.</small></div></li>
+      <li><div class="route-step"><b>Chattogram port</b><small>Containers are discharged for onward movement under customs control.</small></div></li>
+      <li><div class="route-step"><b>Inland rail</b><small>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</small></div></li>
+      <li><div class="route-step"><b>Customs release</b><small>ICD customs clears the cargo, with examination and payments as applicable.</small></div></li>
+      <li><div class="route-step"><b>Client warehouse</b><small>Released coils reach the buyer’s warehouse for unloading and checks.</small></div></li>
     </ol>
-    <p class="route-note">Illustrative supply chain. ASMI is a trader: mining and steelmaking are done by the mills we source from. Production, routing and responsibilities vary by order.</p>
+    <p class="route-note">Illustrative supply chain. ASMI is a steel trader. Production methods, ports, routing and responsibilities vary by order; inland rail to ICD Kamalapur applies only where arranged.</p>
   </div>
 </section>
 
@@ -592,13 +626,7 @@ footer a:hover{color:var(--gold-hi)}
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
 </script>
-<script type="module">
-  // load the 3D route only when visitors get near it (saves about 700 KB on first load)
-  const st=document.getElementById('route-stage');
-  const go=()=>import('./js/route3d.js');
-  if(!st||!('IntersectionObserver' in window)){go();}
-  else{const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();go();}},{rootMargin:'800px 0px'});io.observe(st);}
-</script>
+<script src="trade-video.js" defer></script>
 <script src="js/goldvoid.js" defer></script>
 </body>
 </html>
