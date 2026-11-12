@@ -329,6 +329,21 @@ footer a:hover{color:var(--gold-hi)}
 .route-steps .route-step{cursor:default}
 @media(max-width:560px){.film-heading{display:none;padding:16px 16px 35px}.film-toolbar{padding:12px 14px}.film-chapters{width:100%}.film-chapters button{flex:1 1 42%;text-align:left}.trade-film figcaption{padding:0 14px 14px}}
 
+/* language switcher + right-to-left support */
+.lang{position:relative;margin-inline-start:auto}
+.lang-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(212,175,55,.45);color:#FFE57F;font:500 .85rem var(--body,inherit);padding:9px 11px;cursor:pointer;white-space:nowrap}
+.lang-list{position:absolute;inset-inline-end:0;top:calc(100% + 8px);z-index:70;background:#070707;border:1px solid rgba(212,175,55,.35);padding:6px;display:grid;grid-template-columns:repeat(2,minmax(130px,1fr));gap:2px;max-height:70vh;overflow:auto;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.lang-list[hidden]{display:none}
+.lang-list button{background:none;border:0;color:#ECE6D6;font:inherit;font-size:.92rem;text-align:start;padding:10px 12px;cursor:pointer}
+.lang-list button:hover,.lang-list button[aria-current=true]{background:rgba(212,175,55,.14);color:#FFE57F}
+[dir=rtl] .facts div{border-left:0;border-right:3px solid var(--gold);padding-left:0;padding-right:16px}
+[dir=rtl] .hero::after{transform:scaleX(-1)}
+.non-latin h1,.non-latin h2,.non-latin .eyebrow,.non-latin .mono{letter-spacing:0;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans",sans-serif;font-weight:800}
+.non-latin h1{line-height:1.25}
+html,body{overflow-x:clip}
+[dir=rtl] input[name=botcheck]{left:auto!important;right:-9999px}
+[dir=rtl] .skip-link{left:auto;right:-9999px}
+@media(max-width:520px){.nav>.btn{display:none!important}.lang-btn span{display:none}.lang-btn{padding:10px}.lang-list{grid-template-columns:repeat(2,minmax(110px,1fr));position:fixed;inset-inline:12px;top:70px}}
 </style>
 <link rel="canonical" href="https://aryasahelmetalinternational.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316263F'/%3E%3Cpath d='M32 10 54 50H42L32 31 22 50H10z' fill='%23C9D1DB'/%3E%3Cpath d='M32 10 54 50H42L32 31z' fill='%23E8892B'/%3E%3C/svg%3E">
@@ -637,5 +652,6 @@ footer a:hover{color:var(--gold-hi)}
 </script>
 <script src="trade-video.js?v=3d-20261108-1" defer></script>
 <script src="js/goldvoid.js" defer></script>
+<script src="js/i18n.js" defer></script>
 </body>
 </html>
