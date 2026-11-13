@@ -344,6 +344,36 @@ html,body{overflow-x:clip}
 [dir=rtl] input[name=botcheck]{left:auto!important;right:-9999px}
 [dir=rtl] .skip-link{left:auto;right:-9999px}
 @media(max-width:520px){.nav>.btn{display:none!important}.lang-btn span{display:none}.lang-btn{padding:10px}.lang-list{grid-template-columns:repeat(2,minmax(110px,1fr));position:fixed;inset-inline:12px;top:70px}}
+/* --- UI fixes: film chapters on phones, section bar, back to top, language note --- */
+.film-count{display:none;font:500 .72rem var(--mono);letter-spacing:.06em;color:#e4ca7d}
+.lang-note{margin:0;padding:10px 24px;background:#0b0b0b;border-block:1px solid var(--rule);color:#BDB6A4;font-size:.84rem;text-align:center}
+.lang-note[hidden]{display:none}
+.to-top{position:fixed;inset-inline-end:18px;bottom:18px;z-index:50;width:46px;height:46px;border:1px solid rgba(212,175,55,.5);background:rgba(5,5,5,.9);color:#FFE57F;font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+.to-top.show{opacity:1;pointer-events:auto}
+.secbar{display:none}
+@media(max-width:760px){
+  .secbar{display:flex;position:fixed;inset-inline:0;bottom:0;z-index:50;background:rgba(3,3,3,.96);border-top:1px solid rgba(212,175,55,.3);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:env(safe-area-inset-bottom)}
+  .secbar::-webkit-scrollbar{display:none}
+  .secbar a{flex:0 0 auto;padding:14px 15px;min-height:48px;color:#BDB6A4;text-decoration:none;font-size:.84rem;white-space:nowrap;border-top:2px solid transparent;margin-top:-1px}
+  .secbar a[aria-current=true]{color:#FFE57F;border-top-color:#D4AF37}
+  body{padding-bottom:calc(50px + env(safe-area-inset-bottom))}
+  .to-top{display:none}
+  .consent{bottom:calc(62px + env(safe-area-inset-bottom))}
+}
+@media(max-width:560px){
+  .film-count{display:inline}
+  .film-toolbar{flex-wrap:wrap;gap:8px 14px}
+  .film-chapters{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px;margin-inline:-14px;padding-inline:14px;width:calc(100% + 28px)}
+  .film-chapters::-webkit-scrollbar{display:none}
+  .film-chapters button{flex:0 0 auto;scroll-snap-align:start;white-space:nowrap}
+}
+/* stage texts are shown inside the film itself; kept here only for screen readers and search engines */
+.film-steps{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;margin:-1px;padding:0;border:0}
+/* readability: no text under 12px */
+.lang-partial{font-size:.75rem;opacity:.65;font-weight:400;letter-spacing:.03em;margin-inline-start:.35em}
+.brand small{font-size:.75rem!important}
+.film-runtime,.film-count{font-size:.75rem!important}
+@media(max-width:520px){.brand small{font-size:.75rem!important;letter-spacing:.04em!important}}
 </style>
 <link rel="canonical" href="https://aryasahelmetalinternational.com/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316263F'/%3E%3Cpath d='M32 10 54 50H42L32 31 22 50H10z' fill='%23C9D1DB'/%3E%3Cpath d='M32 10 54 50H42L32 31z' fill='%23E8892B'/%3E%3C/svg%3E">
@@ -453,7 +483,7 @@ html,body{overflow-x:clip}
         <div class="film-heading" aria-hidden="true"><span>ASMI / 3D INDUSTRIAL FILM</span><strong id="film-title">The steel journey</strong></div>
       </div>
       <div class="film-toolbar">
-        <span class="film-runtime">3D FILM / 00:44</span>
+        <span class="film-runtime">3D FILM / 00:44</span><span class="film-count" id="film-count" aria-live="off">Chapter 1 of 11</span>
         <div class="film-chapters" role="group" aria-label="Video chapters">
           <button type="button" data-film-time="0" aria-label="Play stage 1: Raw materials" aria-pressed="true">01 Raw materials</button>
           <button type="button" data-film-time="4" aria-label="Play stage 2: Steelmaking" aria-pressed="false">02 Steelmaking</button>
@@ -468,24 +498,11 @@ html,body{overflow-x:clip}
           <button type="button" data-film-time="40" aria-label="Play stage 11: Client warehouse" aria-pressed="false">11 Client warehouse</button>
         </div>
       </div>
+      <ol class="film-steps" id="film-steps" aria-label="Film stages"><li data-step="0"><b>Mining</b> <span>Iron ore and coal feed one conventional steelmaking route.</span></li><li data-step="1"><b>Furnace & steelmaking</b> <span>A conventional route refines molten iron into steel, then casts slabs.</span></li><li data-step="2"><b>Rolling & coiling</b> <span>Mills roll, finish and coil steel to the required specification.</span></li><li data-step="3"><b>Logistics warehouse</b> <span>Coils are stored, checked and their data recorded.</span></li><li data-step="4"><b>Container stuffing</b> <span>Coils are loaded and secured inside containers.</span></li><li data-step="5"><b>Export port</b> <span>Containers are lifted on board the vessel.</span></li><li data-step="6"><b>Sea freight</b> <span>The cargo travels to Bangladesh, with transhipment where required.</span></li><li data-step="7"><b>Chattogram port</b> <span>Containers are discharged for onward movement under customs control.</span></li><li data-step="8"><b>Inland rail</b> <span>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</span></li><li data-step="9"><b>Customs release</b> <span>ICD customs clears the cargo, with examination and payments as applicable.</span></li><li data-step="10"><b>Client warehouse</b> <span>Released coils reach the buyer’s warehouse for unloading and checks.</span></li></ol>
       <p id="film-error" role="status" hidden>The film could not load. Check your connection and <button type="button" id="film-retry">try again</button>. The route below is available to read.</p>
-      <figcaption id="film-description">An original, code-generated 3D visualisation of eleven supply-chain stages. ASMI is a steel trader; the mines, mills, vessels and terminals shown are illustrative, not ASMI-owned facilities. Actual production methods and delivery routes vary by order.</figcaption>
+      <figcaption id="film-description">An original, code-generated 3D visualisation of eleven supply-chain stages. ASMI is a steel trader; the mines, mills, vessels and terminals shown are illustrative, not ASMI-owned facilities. Actual production methods, ports and delivery routes vary by order; inland rail to ICD Kamalapur applies only where arranged.</figcaption>
     </figure>
-    <div class="route-intro"><p class="eyebrow">The supply chain</p><h3>From source to warehouse.</h3></div>
-    <ol class="route-steps" id="route-steps">
-      <li><div class="route-step"><b>Mining</b><small>Iron ore and coal feed one conventional steelmaking route.</small></div></li>
-      <li><div class="route-step"><b>Furnace & steelmaking</b><small>A conventional route refines molten iron into steel, then casts slabs.</small></div></li>
-      <li><div class="route-step"><b>Rolling & coiling</b><small>Mills roll, finish and coil steel to the required specification.</small></div></li>
-      <li><div class="route-step"><b>Logistics warehouse</b><small>Coils are stored, checked and their data recorded.</small></div></li>
-      <li><div class="route-step"><b>Container stuffing</b><small>Coils are loaded and secured inside containers.</small></div></li>
-      <li><div class="route-step"><b>Export port</b><small>Containers are lifted on board the vessel.</small></div></li>
-      <li><div class="route-step"><b>Sea freight</b><small>The cargo travels to Bangladesh, with transhipment where required.</small></div></li>
-      <li><div class="route-step"><b>Chattogram port</b><small>Containers are discharged for onward movement under customs control.</small></div></li>
-      <li><div class="route-step"><b>Inland rail</b><small>Sealed containers travel by rail to ICD Kamalapur, Dhaka.</small></div></li>
-      <li><div class="route-step"><b>Customs release</b><small>ICD customs clears the cargo, with examination and payments as applicable.</small></div></li>
-      <li><div class="route-step"><b>Client warehouse</b><small>Released coils reach the buyer’s warehouse for unloading and checks.</small></div></li>
-    </ol>
-    <p class="route-note">Illustrative supply chain. ASMI is a steel trader. Production methods, ports, routing and responsibilities vary by order; inland rail to ICD Kamalapur applies only where arranged.</p>
+
   </div>
 </section>
 
@@ -651,7 +668,30 @@ html,body{overflow-x:clip}
 })();
 </script>
 <script src="trade-video.js?v=3d-20261108-1" defer></script>
-<script src="js/goldvoid.js" defer></script>
-<script src="js/i18n.js?v=2" defer></script>
+<script src="js/goldvoid.js?v=2" defer></script>
+<nav class="secbar" id="secbar" aria-label="Sections">
+  <a href="#products">Products</a><a href="#journey">Route</a><a href="#how">How it works</a><a href="#quality">Quality</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+</nav>
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+<script>
+(() => {
+  // section bar: highlight the section in view, keep labels in the chosen language
+  const bar = document.getElementById('secbar'), links = [...bar.querySelectorAll('a')];
+  const secs = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+  const mark = () => { const y = innerHeight * 0.35; let cur = -1; secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top <= y) cur = i; });
+    links.forEach((a, i) => { const on = i === cur; if (on && a.getAttribute('aria-current') !== 'true') bar.scrollTo({ left: a.offsetLeft - 40, behavior: 'smooth' }); a.setAttribute('aria-current', String(on)); });
+    top.classList.toggle('show', scrollY > innerHeight * 0.9); };
+  const top = document.getElementById('to-top');
+  top.addEventListener('click', () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+  let tick = false; addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(() => { tick = false; mark(); }); } }, { passive: true });
+  mark();
+  // film: "Chapter n of 11" and keep the active chip visible in its row
+  const row = document.querySelector('.film-chapters'), count = document.getElementById('film-count');
+  if (row && count) { const chips = [...row.querySelectorAll('button')];
+    new MutationObserver(() => { const i = chips.findIndex(b => b.getAttribute('aria-pressed') === 'true'); if (i < 0) return; count.textContent = 'Chapter ' + (i + 1) + ' of ' + chips.length; if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: chips[i].offsetLeft - row.offsetLeft - 14, behavior: 'smooth' }); })
+      .observe(row, { attributes: true, subtree: true, attributeFilter: ['aria-pressed'] }); }
+})();
+</script>
+<script src="js/i18n.js?v=3" defer></script>
 </body>
 </html>
