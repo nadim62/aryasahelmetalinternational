@@ -23,7 +23,7 @@
   ];
   const coarse = matchMedia('(pointer: coarse)').matches;
   const cfg = {
-    density: coarse ? 0.8 : 1.1,   // specks per 1750 px² of screen
+    density: coarse ? 0.32 : 1.1,   // specks per 1750 px² of screen
     radius: coarse ? 170 : 210,    // how far around the pointer gold wakes up
     fadeMs: 3200,                  // everything is black again after this
     links: !coarse                 // constellation lines (desktop only)
@@ -179,10 +179,10 @@
   }
 
   function size() {
-    W = innerWidth; H = innerHeight; dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight; dpr = Math.min(devicePixelRatio || 1, coarse ? 1.5 : 2);
     canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const want = Math.min(1800, Math.floor((W * H) / 1750 * cfg.density));
+    const want = Math.min(coarse ? 450 : 1800, Math.floor((W * H) / 1750 * cfg.density));
     while (parts.length < want) parts.push(new Speck());
     parts.length = want;
     for (const p of parts) { if (p.x > W) p.x = Math.random() * W; if (p.y > H) p.y = Math.random() * H; }
