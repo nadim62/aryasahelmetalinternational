@@ -10,7 +10,7 @@
     zh: { name: '中文', t: ['产品', '运输路线', '合作流程', '质量', '常见问题', '菜单', '获取报价', '国际钢材贸易', '一级品与', '二级品钢材。', '国际供应。', 'Arya Sahel Metal International 为国际贸易供应一级品和二级品钢材。请从您所需的材料、规格和数量开始。', '出售您的库存', '联系我们', '从您的规格开始。', '告诉我们您的需求，或向我们提供库存报价。您可以在下方填写询盘、直接发送电子邮件，或致电洽谈。', '致电 ASMI', '邮件询盘', '办公地址', '语言'] },
     es: { name: 'Español', t: ['Productos', 'Ruta', 'Cómo funciona', 'Calidad', 'Preguntas', 'Menú', 'Solicitar cotización', 'Comercio internacional de acero', 'Acero de primera', 'y de segunda.', 'Suministro internacional.', 'Arya Sahel Metal International suministra acero de primera y de segunda calidad para el comercio internacional. Empiece por el material, la especificación y la cantidad que necesita.', 'Ofrezca su stock', 'Contacto', 'Empiece por su especificación.', 'Díganos qué necesita o envíenos una oferta de stock. Prepare su consulta abajo, escríbanos por correo o llámenos para hablar de sus requisitos.', 'LLAME A ASMI', 'CONSULTAS POR CORREO', 'DIRECCIÓN DE LA OFICINA', 'Idioma'] },
     fr: { name: 'Français', t: ['Produits', 'Itinéraire', 'Fonctionnement', 'Qualité', 'FAQ', 'Menu', 'Demander un devis', 'Négoce international d’acier', 'Acier de premier', 'et de second choix.', 'Fourniture internationale.', 'Arya Sahel Metal International fournit de l’acier de premier et de second choix pour le commerce international. Commencez par le matériau, la spécification et la quantité dont vous avez besoin.', 'Proposer votre stock', 'Contact', 'Commencez par votre spécification.', 'Dites-nous ce dont vous avez besoin ou proposez-nous un stock. Préparez votre demande ci-dessous, écrivez-nous par e-mail ou appelez-nous pour en discuter.', 'APPELER ASMI', 'DEMANDES PAR E-MAIL', 'ADRESSE DU BUREAU', 'Langue'] },
-    de: { name: 'Deutsch', t: ['Produkte', 'Route', 'Ablauf', 'Qualität', 'FAQ', 'Menü', 'Angebot anfragen', 'Internationaler Stahlhandel', 'Stahl in 1. Wahl', 'und 2. Wahl.', 'Internationale Lieferung.', 'Arya Sahel Metal International liefert Stahl in 1. Wahl und 2. Wahl für den internationalen Handel. Beginnen Sie mit Material, Spezifikation und Menge, die Sie benötigen.', 'Lagerbestand anbieten', 'Kontakt', 'Beginnen Sie mit Ihrer Spezifikation.', 'Sagen Sie uns, was Sie benötigen, oder bieten Sie uns Ihren Lagerbestand an. Bereiten Sie Ihre Anfrage unten vor, schreiben Sie uns eine E-Mail oder rufen Sie an.', 'ASMI ANRUFEN', 'ANFRAGEN PER E-MAIL', 'BÜROADRESSE', 'Sprache'] },
+    de: { name: 'Deutsch', t: ['Produkte', 'Lieferkette', 'Ablauf', 'Qualität', 'Häufige Fragen', 'Menü', 'Angebot anfordern', 'Internationaler Stahlhandel', 'Prime- und', 'Non-Prime-Stahl.', 'Weltweite Lieferung.', 'Arya Sahel Metal International liefert Prime- und Non-Prime-Stahl für den internationalen Handel. Teilen Sie uns Ihre Anforderungen an Material, Spezifikation und Menge mit.', 'Bestände anbieten', 'Kontakt', 'Ihre Spezifikation ist der Ausgangspunkt.', 'Teilen Sie uns Ihren Materialbedarf mit oder bieten Sie uns Ihre Bestände an. Nutzen Sie das folgende Anfrageformular, schreiben Sie uns eine E-Mail oder besprechen Sie Ihre Anforderungen telefonisch mit uns.', 'ASMI ANRUFEN', 'ANFRAGEN PER E-MAIL', 'GESCHÄFTSANSCHRIFT', 'Sprache'] },
     pt: { name: 'Português', t: ['Produtos', 'Rota', 'Como funciona', 'Qualidade', 'Perguntas', 'Menu', 'Pedir cotação', 'Comércio internacional de aço', 'Aço de primeira', 'e de segunda linha.', 'Fornecimento internacional.', 'A Arya Sahel Metal International fornece aço de primeira e de segunda linha para o comércio internacional. Comece pelo material, pela especificação e pela quantidade de que precisa.', 'Ofereça o seu estoque', 'Contato', 'Comece pela sua especificação.', 'Diga-nos o que precisa ou envie uma oferta de estoque. Prepare o seu pedido abaixo, escreva-nos por e-mail ou ligue para conversar sobre os seus requisitos.', 'LIGAR PARA A ASMI', 'CONSULTAS POR E-MAIL', 'ENDEREÇO DO ESCRITÓRIO', 'Idioma'] },
     ru: { name: 'Русский', t: ['Продукция', 'Маршрут', 'Как мы работаем', 'Качество', 'Вопросы', 'Меню', 'Запросить цену', 'Международная торговля сталью', 'Сталь первого', 'и второго сорта.', 'Международные поставки.', 'Arya Sahel Metal International поставляет сталь первого и второго сорта для международной торговли. Начните с нужного материала, спецификации и количества.', 'Предложить свой склад', 'Контакты', 'Начните со спецификации.', 'Сообщите, что вам нужно, или предложите нам складской остаток. Подготовьте запрос ниже, напишите нам по электронной почте или позвоните.', 'ПОЗВОНИТЬ В ASMI', 'ЗАПРОСЫ ПО E-MAIL', 'АДРЕС ОФИСА', 'Язык'] },
     tr: { name: 'Türkçe', t: ['Ürünler', 'Rota', 'Nasıl çalışır', 'Kalite', 'SSS', 'Menü', 'Teklif isteyin', 'Uluslararası çelik ticareti', 'Birinci ve', 'ikinci kalite çelik.', 'Uluslararası tedarik.', 'Arya Sahel Metal International, uluslararası ticaret için birinci ve ikinci kalite çelik tedarik eder. İhtiyacınız olan malzeme, şartname ve miktarla başlayın.', 'Stoğunuzu teklif edin', 'İletişim', 'Şartnamenizle başlayın.', 'Neye ihtiyacınız olduğunu söyleyin veya stok teklifinizi paylaşın. Talebinizi aşağıda hazırlayın, bize e-posta gönderin veya arayın.', 'ASMI’Yİ ARAYIN', 'E-POSTA İLE TALEP', 'OFİS ADRESİ', 'Dil'] },
@@ -41,11 +41,17 @@
   ];
   const h1 = q('.hero h1'), ctas = qa('header .btn-heat, .hero .btn-heat');
 
+  const device = () => (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']).join(',');
   function pick() {
     const url = new URLSearchParams(location.search).get('lang');
     if (url && L[url.toLowerCase()]) return url.toLowerCase();               // shared link wins
-    let saved = null; try { saved = localStorage.getItem(KEY); } catch (_) {}
-    if (saved && L[saved]) return saved;                                      // visitor's own choice
+    // visitor's own choice — kept only while the device language settings are the same as when they chose.
+    // If the device language changes later, the choice is dropped and the site follows the device again.
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && saved.l && L[saved.l] && saved.d === device()) return saved.l;
+      localStorage.removeItem(KEY);
+    } catch (_) { try { localStorage.removeItem(KEY); } catch (__) {} }
     for (const tag of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
       const base = String(tag).toLowerCase().split('-')[0];                   // es-MX → es, zh-Hant-TW → zh
       if (L[base]) return base;
@@ -76,7 +82,7 @@
   const toggle = q('.menu-toggle'); toggle.parentNode.insertBefore(box, toggle);
   const close = () => { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
   btn.addEventListener('click', e => { e.stopPropagation(); list.hidden = !list.hidden; btn.setAttribute('aria-expanded', String(!list.hidden)); });
-  list.addEventListener('click', e => { const b = e.target.closest('button[data-lang]'); if (!b) return; try { localStorage.setItem(KEY, b.dataset.lang); } catch (_) {} apply(b.dataset.lang); close(); btn.focus(); });
+  list.addEventListener('click', e => { const b = e.target.closest('button[data-lang]'); if (!b) return; try { localStorage.setItem(KEY, JSON.stringify({ l: b.dataset.lang, d: device() })); } catch (_) {} apply(b.dataset.lang); close(); btn.focus(); });
   document.addEventListener('click', e => { if (!box.contains(e.target)) close(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 
