@@ -1,0 +1,18 @@
+:root{--bg:#050505;--ink:#E9E4D6;--muted:#A39C8A;--gold:#D4AF37;--gold-hi:#E8C766;--card:#0F0E0B;--rule:rgba(212,175,55,.22);--display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;--steel:#A39C8A}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--body)}
+a{color:var(--gold-hi)}a:hover{color:#fff}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+header{background:#000;border-bottom:1px solid var(--rule)}header .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center;padding:18px 24px}
+header nav{display:flex;gap:18px;flex-wrap:wrap}header nav a{text-decoration:none}header nav a[aria-current]{color:var(--muted)}
+.brand{font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;color:var(--gold-hi)}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+main .wrap{padding:56px 24px 72px}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,6vw,3.4rem);line-height:.95;margin:0 0 8px;color:var(--gold-hi);overflow-wrap:anywhere}
+.sub{font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 36px}
+h2{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:1.5rem;letter-spacing:.02em;margin:34px 0 8px;padding-top:18px;border-top:1px solid var(--rule);color:var(--gold-hi)}
+.card{background:var(--card);border:1px solid var(--rule);padding:22px 24px;margin:0 0 8px}
+dl{display:grid;grid-template-columns:200px 1fr;gap:6px 20px;margin:0}dt{font-family:var(--mono);font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-top:2px}dd{margin:0}
+@media(max-width:600px){dl{grid-template-columns:1fr}dd{margin-bottom:10px}}
+footer{border-top:1px solid var(--rule);font-size:.88rem;color:var(--muted)}footer .wrap{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;padding:22px 24px}
+footer nav{display:flex;gap:18px}
+ol{padding-left:1.3em}li{margin:0 0 8px}.note{background:var(--card);border-left:4px solid var(--gold);padding:14px 18px;margin:0 0 26px;color:var(--muted);font-size:.92rem}
+code{color:var(--gold-hi)}
